@@ -6,6 +6,7 @@ import React, {
   TouchableHighlight
 } from 'react-native';
 
+import Fourth from '../Fourth';
 // var Fourth = require('./Fourth');
 
 class Third extends Component {
@@ -19,7 +20,7 @@ class Third extends Component {
 
   onButtonPress() {
     this.props.navigator.push({
-      id: 'Fourth'
+      component: Fourth
     });
   }
 

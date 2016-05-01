@@ -9,19 +9,17 @@ import React, {
 import Signup from './app/Signup';
 import Account from './app/Account';
 import Login from './app/Login';
+import Home from './app/Home';
+import Second from './app/Second';
 import Firebase from 'firebase';
 
 let app = new Firebase("https://dudewheresmycar.firebaseio.com/");
 
-var Home = require('./app/Home');
-var Second = require('./app/Second');
 var Third = require('./app/components/Third');
 var Fourth = require('./app/Fourth');
 var Error = require('./app/Error');
 var Repin = require('./app/Repin');
 var SaveYourPin = require('./app/SaveYourPin');
-// var MapExample = require('./app/MapExample');
-// var Signup = require('./app/Signup');
 
 class WheresMyCar extends Component {
 
@@ -44,7 +42,7 @@ class WheresMyCar extends Component {
           if(error){
             this.setState(component);
           }else{
-            this.setState({component: Account});
+            this.setState({component: Second});
           }
         });
       }else{
@@ -80,41 +78,6 @@ class WheresMyCar extends Component {
     }
 
   }
-  // navigatorRenderScene(route, navigator){
-  //   _navigator = navigator;
-  //   switch (route.id) {
-  //     case 'First':
-  //       return (<First passProps={route.passProps}
-  //       navigator={navigator} title="First" />);
-  //     case 'Second':
-  //       return (<Second passProps={route.passProps}
-  //       navigator={navigator} title="Second" />);
-  //     case 'Third':
-  //       return (<Third passProps={route.passProps}
-  //       navigator={navigator} title="Third" />);
-  //     case 'Fourth':
-  //       return (<Fourth passProps={route.passProps}
-  //       navigator={navigator} title="Fourth" />);
-  //     case 'Error':
-  //       return (<Error passProps={route.passProps}
-  //       navigator={navigator} title="Error" />);
-  //     case 'Repin':
-  //       return (<Repin passProps={route.passProps}
-  //       navigator={navigator} title="Repin" />);
-  //     case 'SaveYourPin':
-  //       return (<SaveYourPin passProps={route.passProps}
-  //       navigator={navigator} title="SaveYourPin" />);
-  //     case 'MapExample':
-  //       return (<MapExample passProps={route.passProps}
-  //       navigator={navigator} title="MapExample" />);
-  //     case 'Login':
-  //       return (<Login passProps={route.passProps}
-  //       navigator={navigator} title="Login" />);
-  //     case 'Signup':
-  //       return (<Signup passProps={route.passProps}
-  //       navigator={navigator} title="Signup" />);
-  //     }
-  //   }
   }
 
 const styles = StyleSheet.create({

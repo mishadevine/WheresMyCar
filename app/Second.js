@@ -6,7 +6,9 @@ import React, {
   TouchableHighlight
 } from 'react-native';
 
-var Third = require('./components/Third');
+import Third from './components/Third';
+import Error from './Error';
+import Home from './Home';
 
 class Second extends Component {
 
@@ -19,13 +21,13 @@ class Second extends Component {
 
   onButtonPress() {
     this.props.navigator.push({
-      id: 'Error',
+      component: Error,
       passProps: true
     });
   }
   onButtonBack() {
     this.props.navigator.push({
-      id: 'First'
+      component: Home,
     });
   }
 
@@ -103,7 +105,6 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     borderRadius: 5,
     marginBottom: 20,
-    // fontSize: 20,
     textAlign: 'center',
   },
   buttonBack: {

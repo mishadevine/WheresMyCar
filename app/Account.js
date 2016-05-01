@@ -1,5 +1,4 @@
 import React, {
-  AppRegistry,
   Component,
   StyleSheet,
   Text,
@@ -11,7 +10,6 @@ import React, {
 
 import Button from './components/Button';
 import Map from './Map';
-import Login from './Login';
 import Firebase from 'firebase';
 
 let app = new Firebase("https://dudewheresmycar.firebaseio.com/");
@@ -22,25 +20,22 @@ class Account extends Component {
   constructor(props){
     super(props);
     this.state = {
-      // pinStatus: false
-      loaded: false,
+      pinStatus: false
     }
   }
 
   onButtonPress() {
     this.props.navigator.push({
-      component: Second,
-      passProps: this.state.pinStatus
+      component: Home
     })
   }
 
-  componentWillMount(){
+  logout(){
 
-    AsyncStorage.getItem('user_data').then((user_data_json) => {
-      let user_data = JSON.parse(user_data_json);
-      this.setState({
-        user: user_data,
-        loaded: true
+    AsyncStorage.removeItem('user_data').then(() => {
+      app.unauth();
+      this.props.navigator.push({
+        component: Home
       });
     });
 
@@ -61,12 +56,29 @@ class Account extends Component {
             <View style={styles.wrapper}
             pointerEvents={'box-none'}>
               <Text style={styles.pinCar}>
-                Welcome To Your Account
+                Your Account
               </Text>
+              <TouchableHighlight
+                style={styles.logoutButton}
+                onPress={this.logout.bind(this)}
+                >
+                <View style={styles.logoutContainer}>
+                <Text style={styles.logoutText}>
+                  Logout
+                </Text>
+                </View>
+              </TouchableHighlight>
             </View>
-          </View>
-          <View style={styles.recentPins}>
-            <Text> Your Recent Pins </Text>
+
+
+              <TouchableHighlight
+              style={styles.primary_button}
+                onpress={this.onButtonPress.bind(this)}
+                 underlayColor={"#E8E8E8"} onPress={this.props.onpress}>
+                <View>
+                    <Text>Your Recent Pins</Text>
+                </View>
+              </TouchableHighlight>
           </View>
         </View>
         <View style={styles.footer}>
@@ -111,8 +123,24 @@ const styles = StyleSheet.create({
     marginBottom: 100,
     fontFamily: "Krungthep",
   },
-  recentPins: {
-    // marginTop: -300,
+  logoutText: {
+    width: 90,
+    marginTop: -140,
+    marginLeft: 280,
+    textAlign: 'center',
+  },
+  primary_button: {
+    backgroundColor: '#52c14f',
+    padding: 20,
+    paddingLeft: 70,
+    paddingRight: 70,
+    borderRadius: 5,
+    alignSelf: 'center',
+    marginBottom: 200,
+  },
+  primary_button_text: {
+    color: 'black',
+    fontSize: 18,
   },
   footer: {
     backgroundColor: '#6fc5ee',

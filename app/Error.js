@@ -6,12 +6,12 @@ import React, {
   TouchableHighlight
 } from 'react-native';
 
-var Repin = require('./Repin');
+import Repin from './Repin';
 
 class Error extends Component {
   onButtonPress() {
     this.props.navigator.push({
-      id: 'Repin'
+      component: Repin
     });
   }
 

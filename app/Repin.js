@@ -6,12 +6,12 @@ import React, {
   TouchableHighlight
 } from 'react-native';
 
-var Third = require('./components/Third');
+import Third from './components/Third';
 
 class Repin extends Component {
   onButtonPress() {
     this.props.navigator.push({
-      id: 'Third'
+      component: Third
     });
   }
 

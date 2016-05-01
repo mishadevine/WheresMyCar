@@ -41,13 +41,13 @@ class Home extends Component {
 
         <Map style={styles.float} />
         <View
-        style={styles.float}
-        pointerEvents={'box-none'}>
-          <View
-          style={styles.container}
+          style={styles.float}
           pointerEvents={'box-none'}>
-            <View style={styles.wrapper}
+          <View
+            style={styles.container}
             pointerEvents={'box-none'}>
+            <View style={styles.wrapper}
+              pointerEvents={'box-none'}>
               <Text style={styles.pinCar}>
                 Pin Your Car Now!
               </Text>
@@ -65,9 +65,9 @@ class Home extends Component {
 
 
               <TouchableHighlight
-              style={styles.primary_button}
-                onpress={this.onButtonPress.bind(this)}
-                 underlayColor={"#E8E8E8"} onPress={this.props.onpress}>
+                style={styles.primary_button}
+                onPress={this.onButtonPress.bind(this)}
+              >
                 <View>
                     <Text>Pin My Car</Text>
                 </View>
